@@ -1,6 +1,6 @@
 # File Searcher App
 
-Application to search a large amount f files for specific text
+Application to search a large amount of text (.txt) files for specific text
 
 ## Topics
 * yield/yield from
