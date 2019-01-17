@@ -4,9 +4,15 @@ import os
 
 from tp_common import print_header
 
+
 SearchResult = collections.namedtuple('SearchResult',
                                       'file, line, text')
-
+"""
+SearchResult is a name tuple collection
+:param file: The associated file
+:param line: The text line number
+:param text: The located search text
+"""
 
 def main():
     print_header('File Searcher')
@@ -36,6 +42,7 @@ def main():
 
 
 def get_folder_from_user():
+    """Request folder path from the user"""
     folder = input('What folder do you want to search? ')
     if not folder or not folder.strip():
         return None
@@ -47,11 +54,18 @@ def get_folder_from_user():
 
 
 def get_search_text_from_user():
+    """Request text to search from the user"""
     text = input('What are you searching for [single phrases only]? ')
     return text.lower()
 
 
 def search_file(filename, search_text):
+    """
+    Searches the specified file for the search text
+    :param filename: File to search
+    :param search_text: Term to locate in the file
+    :return: SearchResult for matches
+    """
     # matches = []
     with open(filename, 'r', encoding='utf-8') as fin:
 
@@ -66,6 +80,12 @@ def search_file(filename, search_text):
 
 
 def search_folders(folder, text):
+    """
+    Searched files in folder for given text
+    :param folder: Folder to search
+    :param text: text to locate in the folder's files
+    :return: SearchResult for given foler & text
+    """
     # all_matches = []
     items = os.listdir(folder)
 

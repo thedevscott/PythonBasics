@@ -12,6 +12,11 @@ from tp_common import print_header
 
 
 def load_file(filename):
+    """
+    Loads csv data for the specified filename
+    :param filename: The CSV data file
+    :return List of CSV dict data
+    """
     with open(filename, 'r', encoding='utf-8') as fin:
         purchases = []
         reader = csv.DictReader(fin)
@@ -37,11 +42,21 @@ def load_file(filename):
 
 
 def announce(item, msg):
+    """
+    Prints an announcement for given item
+    :param item: The data being worked on
+    :param msg: The type of data 'item' is ie: price
+    :return: item
+    """
     print("Pulling item {} for {}".format(item, msg))
     return item
 
 
 def query_data(data):
+    """
+    Analyzes the given data for purchase information
+    :param data: CSV data about property purchases
+    """
     # Sort by price
     data.sort(key=lambda p: p.price)
 
@@ -105,6 +120,10 @@ def main():
 
 
 def get_data_file():
+    """
+    Provides full path to the CSV data file
+    :return: full path to the CSV data file
+    """
     base_folder = os.path.dirname(__file__)
     return os.path.join(base_folder, 'data',
                         'SacramentoRealEstateTransactions2008.csv')

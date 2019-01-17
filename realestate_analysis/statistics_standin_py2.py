@@ -1,6 +1,9 @@
 
 def mean(data):
-
+    """
+    Simple method to calculate the mean of a collection
+    :param data: Collection to work on
+    """
     total = 0
     count = 0
 
