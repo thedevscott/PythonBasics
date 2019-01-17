@@ -1,5 +1,5 @@
 # Movie Searcher
-This application focuses on RESTful data consumtion, error handling 
+This application focuses on RESTful data consumption, error handling 
 and reliable code
 
 ## Topics
