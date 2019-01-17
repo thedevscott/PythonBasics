@@ -1,5 +1,5 @@
 """Collections of function(s) for querying the talkpython movie service"""
-import requests
+import requests.exceptions
 import collections
 
 MovieResults = collections.namedtuple(

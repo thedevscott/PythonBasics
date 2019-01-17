@@ -1,7 +1,9 @@
 # Movie Searcher
-Application focuses on error handling and reliable code
+This application focuses on RESTful data consumtion, error handling 
+and reliable code
 
 ## Topics
+* Consuming REST data
 * Error handling
 * try/except blocks
 * multiple except

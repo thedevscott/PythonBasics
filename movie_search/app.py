@@ -1,6 +1,6 @@
 """Movie Search"""
 import requests
-import collections
+import movie_search.movie_services as mvs
 
 from tp_common import print_header
 
@@ -8,20 +8,26 @@ from tp_common import print_header
 def run_event_loop():
     while True:
 
-        search = input("What would you like to search for? E[x]it: ")
+        try:
+            search = input("What would you like to search for? (X to exit): ")
 
-        if search.lower() == 'x':
-            print('Bye')
-            break
+            if search.lower() == 'x':
+                print('Bye')
+                break
 
-        url = 'http://movie_service.talkpython.fm/api/search/{}'.format(search)
+            results = mvs.find_movies(search)
+            print("Found {} results.".format(len(results)))
+            [
+                print('{} -- {}'.format(r.year, r.title))
+                for r in results
+            ]
 
-        resp = requests.get(url)
-        resp.raise_for_status()
-        movie_data = resp.json()
-        movies = movie_data.get('hits')
-
-        print(movies)
+        except ValueError:
+            print("Error, search text is required")
+        except requests.exceptions.ConnectionError:
+            print("Error, unable to establish a connection")
+        except Exception as e:
+            print("Unexpected error. Details {}".format(e))
 
 
 def main():
